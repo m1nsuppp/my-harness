@@ -1,5 +1,11 @@
 {
   "permissions": {
+    "deny": [
+      "Read(**/.env*)",
+      "Edit(**/.env*)",
+      "Bash(cat */.env*)",
+      "Bash(cat .env*)"
+    ],
     "allow": [
       "Bash(*)",
       "Read(*)",
@@ -52,7 +58,8 @@
     "code-review@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true
   },
   "effortLevel": "high"
 }
