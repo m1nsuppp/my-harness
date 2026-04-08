@@ -30,6 +30,16 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | jq -e \".stop_hook_active\" >/dev/null 2>&1; then exit 0; fi; if ! git -C \"$CLAUDE_PROJECT_DIR\" status --porcelain 2>/dev/null | grep -qE \"\\.(ts|tsx|js|jsx|mjs|cjs)$\"; then exit 0; fi; echo \"{\\\"decision\\\":\\\"block\\\",\\\"reason\\\":\\\"verify-code 스킬을 호출하여 코드를 검증하세요.\\\"}\"'"
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
