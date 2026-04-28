@@ -23,6 +23,22 @@
     ]
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if jq -r \".tool_input.command\" | grep -q \"^cd \"; then echo \"cd 명령어는 차단되었습니다. 루트에서 절대 경로를 사용하세요.\" >&2; exit 2; fi'"
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/ask-eval-on-pr.sh\"",
+            "if": "Bash(gh pr create*)"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write",
